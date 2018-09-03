@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head><title>Rock Paper Scissors</title></head>
+<body>
+	<div id=".output"></div>
+	<p></p>
+<script>
+	let options = ["Rock","Paper","Scissors"]
+	let playerPoints = 0
+	let computerPoints = 0
+function computerPlay() {
+	return options[Math.floor(Math.random() * options.length)] 
+}
+function playRound(playerSelection, computerSelection) {
+	computerSelection = computerSelection.toLowerCase()
+	playerSelection = playerSelection.toLowerCase()
+	if (playerSelection == "rock" && computerSelection == "paper") {
+		alert("You lose, paper beats rock!");
+		computerPoints++;
+	}
+	else if (playerSelection == "scissors" && computerSelection == "paper") {
+		alert("You win, scissors beats paper!");
+		playerPoints++;
+	}
+	else if (playerSelection == "rock" && computerSelection == "scissors") {
+		alert("You win, rock beats scissors!");
+		playerPoints++;
+	}
+	else if (playerSelection == "scissors" && computerSelection == "rock") {
+		alert("You lose, rock beats scissors!");
+		computerPoints++;
+	}
+	else if (playerSelection == "paper" && computerSelection == "scissors") {
+		alert("You lose, scissors beats paper!");
+		computerPoints++;
+	}
+	else if (playerSelection == "paper" && computerSelection == "rock") {
+		alert("You win, paper beats rock!");
+		playerPoints++;
+	}
+	else if (playerSelection == computerSelection) {
+		alert("Nobody wins, you both chose " + playerSelection)
+	}
+	else {
+		alert("Error, you need to input either 'rock' 'paper' or 'scissors' to play.");
+	}
+}
+function game() {
+	
+	while 	(playerPoints !== 3 && computerPoints !== 3) {
+	playRound(prompt("What will you choose?", ""), computerPlay());
+	console.log("The score is " + playerPoints + " to " + computerPoints + ".");
+	}
+	if 		(playerPoints == 3) {
+		console.log("You win!")
+	}
+	else if (computerPoints == 3) {
+		console.log("You lose!")
+	}
+}
+
+
+
+
+</script>
+
+</body>
+</html>
